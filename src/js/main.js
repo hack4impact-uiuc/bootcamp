@@ -1,4 +1,10 @@
+const dialog = document.getElementById("contribute-dialog");
+const contributeButton = document.getElementById("contribute-button");
 const form = document.getElementById("contribute-form");
+
+contributeButton.addEventListener("click", () => {
+  dialog.showModal();
+});
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -9,4 +15,5 @@ form.addEventListener("submit", (event) => {
   alert(name);
 
   form.reset();
+  dialog.close();
 });
