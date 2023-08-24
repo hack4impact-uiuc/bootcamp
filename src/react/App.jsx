@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useRef, useState } from "react";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [contributions, setContributions] = useState([]);
+  const dialog = useRef();
+
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const name = formData.get("name");
+
+    setContributions((contributions) => [...contributions, { name }]);
+
+    form.reset();
+    dialog.close();
+  };
 
   return (
     <>
+      <button id="contribute-button" onClick={() => dialog.showModal()}>
+        + Contribute
+      </button>
+
+      <dialog id="contribute-dialog" ref={dialog}>
+        <form id="contribute-form" onSubmit={onFormSubmit}>
+          <label for="contribute-form-name">Name:</label>
+          <input
+            id="contribute-form-name"
+            placeholder="Yummy food"
+            name="name"
+          />
+          <button>Submit</button>
+        </form>
+      </dialog>
+
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        {contributions.map((contribution) => (
+          <div>{contribution.name}</div>
+        ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

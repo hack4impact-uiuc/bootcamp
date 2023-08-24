@@ -1,6 +1,7 @@
 const dialog = document.getElementById("contribute-dialog");
 const contributeButton = document.getElementById("contribute-button");
 const form = document.getElementById("contribute-form");
+const contributions = document.getElementById("contributions");
 
 contributeButton.addEventListener("click", () => {
   dialog.showModal();
