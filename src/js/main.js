@@ -1,20 +1,9 @@
-const dialog = document.getElementById("contribute-dialog");
-const contributeButton = document.getElementById("contribute-button");
-const form = document.getElementById("contribute-form");
-const contributions = document.getElementById("contributions");
+// [!] Create some variables to reference page elements, you'll need them later.
+// Specifically: The dialog, the contribution button, the form, and the contributions list
 
-contributeButton.addEventListener("click", () => {
-  dialog.showModal();
-});
+// [!] Now, add a "click" event listener for the contribution button so that the dialog shows on click
+// Here's how you can open a dialog as a modal: <dialogElement>.showModal();
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const formData = new FormData(form);
-
-  const name = formData.get("name");
-  alert(name);
-
-  form.reset();
-  dialog.close();
-});
+// [!] Last thing, add a "submit" event listener for the form so that you can add the submitted info to the page
+// Here's how you can get the submitted form data: const formData = new FormData(form); And to access a specific input, formData.get("<inputName>");
+// Then, reset the form and close the dialog, adding a new element with the submitted info the page at the same time.
