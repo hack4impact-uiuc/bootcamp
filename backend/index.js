@@ -1,55 +1,60 @@
 const express = require('express');
 const mongoClient = require('mongodb').MongoClient;
+const cors = require('cors')
 require('dotenv').config()
 
 
 const port = 3002
 const client = new mongoClient(process.env.MONGODB_URI, { useNewUrlParser: true});
 const app = express()
-
-// export async function connectToCluster(uri) {
-//     let mongoClient;
-
-//     console.log("in the function", uri)
- 
-//     try {
-//         mongoClient = new MongoClient(uri, { useNewUrlParser: true });
-//         console.log('Connecting to MongoDB Atlas cluster...');
-//         await mongoClient.connect();
-//         console.log('Successfully connected to MongoDB Atlas!');
-//         await listDatabases(mongoClient);
- 
-//         return mongoClient;
-//     } catch (error) {
-//         console.error('Connection to MongoDB Atlas failed!', error);
-//         process.exit();
-//     }
-//  }
+app.use(cors())
+app.use(express.json())
 
 const getAllEvents = async () => {
-
     try {
-        console.log("got to here")
         client.connect()
-        console.log("next")
          await client.connect();
         // Send a ping to confirm a successful connection
 
         const db =  client.db('free-food');
         const collection = db.collection('events');
 
-        const result = await collection.find({});
-        console.log(result)
-        console.log("got through!")
+        const result = await collection.find({}).toArray();
         return result;
     } finally {
         client.close();
     }
 }
 
+const addEvent = async ({food, date, location, availability}) => {
+  try {
+    client.connect()
+    await client.connect();
+
+    const db =  client.db('free-food');
+    const collection = db.collection('events');
+    const eventDocument = {
+      food: food,
+      availability: availability,
+      location: location,
+      date: date
+    } 
+
+    const result = await collection.insertOne(eventDocument)
+    return result
+} finally {
+    client.close();
+}
+}
+
 
 app.get('/', async (req, res) => {
   const test = await getAllEvents();
+  res.send(test);
+})
+
+app.post('/', async (req, res) => {
+  const test = await addEvent(req.body);
   res.send(test);
 })
 
