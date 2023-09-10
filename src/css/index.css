@@ -1,3 +1,5 @@
-#freefood-banner {
+/* [!] Make it so the #freefood-banner doesn't go off the screen */
+/* Correct solution */
+/* #freefood-banner {
   width: 100%;
-}
+} */
