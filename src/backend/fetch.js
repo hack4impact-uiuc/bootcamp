@@ -1,40 +1,34 @@
 import { MongoClient } from "mongodb"
 
-export async function connectToCluster(uri) {
-    let mongoClient;
 
-    console.log("in the function", uri)
- 
-    try {
-        mongoClient = new MongoClient(uri);
-        console.log('Connecting to MongoDB Atlas cluster...');
-        await mongoClient.connect();
-        console.log('Successfully connected to MongoDB Atlas!');
- 
-        return mongoClient;
-    } catch (error) {
-        console.error('Connection to MongoDB Atlas failed!', error);
-        process.exit();
-    }
- }
-
+/**
+ * Gets all free food events in the database.
+ * @returns Promise containing an array of free food event objects
+ */
 export const getAllEvents = async () => {
-    const uri = import.meta.env.VITE_DB_URI;
-    console.log(uri)
-    let mongoClient;
-
-    try {
-        console.log("got to here")
-        mongoClient = await connectToCluster(uri);
-        console.log("next")
-        const db = mongoClient.db('free-food');
-        const collection = db.collection('events');
-        console.log("got through!")
-    } finally {
-        //await mongoClient.close();
-    }
+    const response = await fetch("http://localhost:3002")
+    return await response.json()
 }
 
+/**
+ * 
+ * @param food String representing what food will be served
+ * @param date Date object representing the date/time of the event
+ * @param location String representing where the event will be
+ * @param availability String representing who can come to the event
+ * @returns Promise containing an object acknowledging the added event
+ */
 export const addEvent = async ({food, date, location, availability}) => {
-
+    const addEventRequest = new Request("http://localhost:3002", {
+        method: "POST",
+        headers: new Headers({"Content-Type": "application/json"}),
+        body: JSON.stringify({
+            food: food,
+            availability: availability,
+            location: location,
+            date: date
+        })
+    })
+    const response = await fetch(addEventRequest)
+    return await response.json()
 }
