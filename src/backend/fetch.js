@@ -1,6 +1,3 @@
-import { MongoClient } from "mongodb"
-
-
 /**
  * Gets all free food events in the database.
  * @returns Promise containing an array of free food event objects
