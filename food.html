@@ -4,19 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/i.svg" />
-    <title>[Site Title Here]</title>
+    <title>Portal | UIUC Free Food</title>
     <script type="module" src="/src/js/main.js" defer></script>
-    <link href="/src/css/index.css" type="text/css" rel="stylesheet" />
+    <link href="/src/css/food.css" type="text/css" rel="stylesheet" />
   </head>
   <body>
-    <a href="/">Home</a>
+    <nav>
+      <a href="/">UIUC Free Food</a>
+    </nav>
 
-    <button id="contribute-button">+ Contribute</button>
+    <div id="contribute-header">
+      <h1>Food Near You</h1>
+      <button id="contribute-button">Contribute</button>
+    </div>
 
     <dialog id="contribute-dialog">
+      <h2>Free Food Contribution Form</h2>
+      <p>
+        Enter details about free food on campus to be respected by your peers.
+      </p>
+
       <form id="contribute-form">
-        <label for="contribute-form-name">Name:</label>
-        <input id="contribute-form-name" placeholder="Yummy food" name="name" />
+        <label for="contribute-form-date">Date:</label>
+        <input id="contribute-form-date" name="date" />
+
+        <label for="contribute-form-food">Food:</label>
+        <input id="contribute-form-food" name="food" />
+
+        <label for="contribute-form-location">Location:</label>
+        <input id="contribute-form-location" name="location" />
+
+        <label for="contribute-form-extra">Extra Info:</label>
+        <input id="contribute-form-extra" name="extra-info" />
+
         <button>Submit</button>
       </form>
     </dialog>

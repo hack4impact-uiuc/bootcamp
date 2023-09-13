@@ -1,4 +1,22 @@
-/* [!] Make it so the #freefood-banner doesn't go off the screen */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
 
-/* [!] Style the homepage link (going to /food.html) to make it look like the designs (a button almost) */
-/*     See the Figma in the README */
+img {
+  width: 500px;
+  margin-bottom: 20px;
+}
+
+#food-portal-link {
+  display: block;
+  border-radius: 3px;
+  background: #ebebeb;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 0.5em 4em;
+  text-decoration: none;
+  color: black;
+}
