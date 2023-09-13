@@ -37,4 +37,48 @@ dialog[open] {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-inline: 4em;
+  width: 400px;
+}
+
+form > label {
+  display: block;
+}
+
+form > input {
+  width: 100%;
+  margin-bottom: 20px;
+  margin-top: 5px;
+  padding: 0.5em 1em;
+  border-radius: 3px;
+  border: 1px solid rgb(162, 162, 162);
+}
+
+form > button {
+  margin-inline: auto;
+}
+
+#contributions {
+  display: flex;
+  flex-direction: column;
+  max-width: 900px;
+  margin-left: 20px;
+}
+
+#contributions > div {
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 0.5em;
+}
+
+#contributions p {
+  margin: 0;
+}
+
+#contributions p:first-child {
+  font-weight: bold;
+}
+
+#contributions p:last-child {
+  color: gray;
 }

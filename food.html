@@ -25,17 +25,43 @@
       </p>
 
       <form id="contribute-form">
-        <label for="contribute-form-date">Date:</label>
-        <input id="contribute-form-date" name="date" />
+        <label for="contribute-form-food">What food is available?</label>
+        <input
+          id="contribute-form-food"
+          placeholder="pizza, caprisuns, cheezits..."
+          name="food"
+        />
 
-        <label for="contribute-form-food">Food:</label>
-        <input id="contribute-form-food" name="food" />
+        <label for="contribute-form-event">What event is the food for?</label>
+        <input
+          id="contribute-form-event"
+          placeholder="engineering open house, mammoth grand opening..."
+          name="event"
+        />
 
-        <label for="contribute-form-location">Location:</label>
-        <input id="contribute-form-location" name="location" />
+        <label for="contribute-form-date">
+          What date is the event / food available?
+        </label>
+        <input id="contribute-form-date" placeholder="mm/dd/yyyy" name="date" />
 
-        <label for="contribute-form-extra">Extra Info:</label>
-        <input id="contribute-form-extra" name="extra-info" />
+        <label for="contribute-form-location">
+          Where is event / food located?</label
+        >
+        <input
+          id="contribute-form-location"
+          placeholder="illini union, south quad..."
+          name="location"
+        />
+
+        <label for="contribute-form-extra">
+          Are there any restrictions with who can grab food? Leave blank if open
+          to everyone.
+        </label>
+        <input
+          id="contribute-form-extra"
+          placeholder="engineering majors, acm members..."
+          name="extra"
+        />
 
         <button>Submit</button>
       </form>

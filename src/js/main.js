@@ -12,9 +12,27 @@ form.addEventListener("submit", (event) => {
 
   const formData = new FormData(form);
 
-  const name = formData.get("name");
-  alert(name);
+  const food = formData.get("food");
+  const eventName = formData.get("event");
+  const date = formData.get("date");
+  const location = formData.get("location");
+  const extra = formData.get("extra");
+
+  const newElement = document.createElement("div");
+  newElement.appendChild(createElement(food));
+  newElement.appendChild(createElement(eventName));
+  newElement.appendChild(createElement(date));
+  newElement.appendChild(createElement(location));
+  newElement.appendChild(createElement(extra));
+
+  contributions.appendChild(newElement);
 
   form.reset();
   dialog.close();
 });
+
+function createElement(text) {
+  const element = document.createElement("p");
+  element.textContent = text;
+  return element;
+}
