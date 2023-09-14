@@ -26,7 +26,7 @@ const getAllEvents = async () => {
     }
 }
 
-const addEvent = async ({food, date, location, availability}) => {
+const addEvent = async ({food, date, location, availability, name}) => {
   try {
     client.connect()
     await client.connect();
@@ -37,7 +37,8 @@ const addEvent = async ({food, date, location, availability}) => {
       food: food,
       availability: availability,
       location: location,
-      date: date
+      date: date,
+      name: name
     } 
 
     const result = await collection.insertOne(eventDocument)

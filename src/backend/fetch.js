@@ -13,9 +13,10 @@ export const getAllEvents = async () => {
  * @param date Date object representing the date/time of the event
  * @param location String representing where the event will be
  * @param availability String representing who can come to the event
+ * @param name String representing the name of the event
  * @returns Promise containing an object acknowledging the added event
  */
-export const addEvent = async ({food, date, location, availability}) => {
+export const addEvent = async ({food, date, location, availability, name}) => {
     const addEventRequest = new Request("http://localhost:3002", {
         method: "POST",
         headers: new Headers({"Content-Type": "application/json"}),
@@ -23,7 +24,8 @@ export const addEvent = async ({food, date, location, availability}) => {
             food: food,
             availability: availability,
             location: location,
-            date: date
+            date: date,
+            name: name
         })
     })
     const response = await fetch(addEventRequest)
