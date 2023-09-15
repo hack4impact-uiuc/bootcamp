@@ -6,15 +6,15 @@ function App() {
       Check out my code. wow <p>no one has ever created anything as cool</p>
       <p>As this</p>
       <img src="oops"></img>
-      <code>This html doesn't look so good</code>
+      <cOdE>This html doesn't look so good</cOdE>
       <b>
-        <b>
+        <B>
           <b>
             <b>
               <b>tags</b>
             </b>
           </b>
-        </b>
+        </B>
       </b>
       <iframe src="/">Wait does this work? This could be sick</iframe>
     </div>
